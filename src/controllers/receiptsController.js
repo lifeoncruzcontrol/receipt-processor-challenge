@@ -1,6 +1,15 @@
 const express = require('express');
+const Database = require('../database');
+const validateReceipt = require('../middleware/receipts.middleware');
+const { validationResult } = require('express-validator');
+
+const db = new Database();
 
 const processReceipt = async (req, res) => {
+	const errors = validationResult(req);
+	if (!errors.isEmpty()){
+		return res.status(400).json({ errors: errors.array() });
+	}
 	try {
 		res.status(200).send('Receipt');	
 	} catch(err) {
