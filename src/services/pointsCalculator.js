@@ -54,7 +54,7 @@ const calculatePoints = (receipt) => {
 		points += 10;
 	}
 
-	return points.toFixed(2);
+	return points;
 };
 
 module.exports = calculatePoints;
