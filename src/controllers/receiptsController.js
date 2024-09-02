@@ -29,13 +29,15 @@ const getPoints = async (req, res) => {
 		const receipt = db.getReceiptById(req.params.id);
 		// Rules for counting total points for a receipt:
 		
-		// 1 point per character in retailer name
-		points += 1 * receipt.retailer.length;
+		// 1 point per alphanumeric character in retailer name
+		const onlyAlphanum = receipt.retailer.replace(/[^a-zA-Z0-9]/g, '');
+		points += 1 * onlyAlphanum.length;
 		
 		if (receipt.total % 1 === 0) {
 			// 50 points if the total is a round dollar amount with no cents.
 			points += 50;
-		} else if ((receipt.total * 4) % 1 === 0) {
+		} 
+		if ((receipt.total * 4) % 1 === 0) {
 			// 25 points if the total is a multiple of 0.25
 			points += 25;
 		}
@@ -50,7 +52,7 @@ const getPoints = async (req, res) => {
 			// remove all whitespace from description
 			const trimmed = item.shortDescription.trim();
 			if (trimmed.length % 3 === 0) {
-				points += Math.ceil(item.price * 0.2)
+				points += Math.ceil(item.price * 0.2);
 			}
 		});
 
