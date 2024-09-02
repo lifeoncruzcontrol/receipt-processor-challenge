@@ -17,7 +17,7 @@ class Database {
 		try {
 			const uuid = uuidv4();
 			this.#data.receipts.set(uuid, receipt);
-			return
+			return uuid;
 		} catch (err) {
 			throw new Error("Error saving receipt to database: " + err);
 		}
