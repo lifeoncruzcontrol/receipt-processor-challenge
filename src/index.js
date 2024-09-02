@@ -12,7 +12,8 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.use('/receipts', validateReceipt, receiptsRoutes);
+app.use('/receipts', receiptsRoutes);
+app.use('/receipts/process', validateReceipt, receiptsRoutes);
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
