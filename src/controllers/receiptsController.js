@@ -11,7 +11,8 @@ const processReceipt = async (req, res) => {
 		return res.status(400).json({ errors: errors.array() });
 	}
 	try {
-		res.status(200).send('Receipt');	
+		const id = db.addReceipt(req.body);
+		res.status(200).send({ 'id': id });
 	} catch(err) {
 		res.status(500).send('Internal server error');
 	}
