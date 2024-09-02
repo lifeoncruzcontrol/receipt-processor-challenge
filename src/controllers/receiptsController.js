@@ -20,7 +20,8 @@ const processReceipt = async (req, res) => {
 
 const getPoints = async (req, res) => {
 	try {
-		res.status(200).send('Points');	
+		const receipt = db.getReceiptById(req.params.id);
+		res.status(200).send({ 'receipt': receipt });	
 	} catch (err) {
 		res.status(500).send('Internal server error');
 	}
