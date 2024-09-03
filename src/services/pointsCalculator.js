@@ -20,7 +20,7 @@ const calculatePoints = (receipt) => {
 		// 50 points if the total is a round dollar amount with no cents.
 		points += 50;
 	} 
-	if ((receipt.total * 4) % 1 === 0) {
+	if (receipt.total % 0.25 === 0) {
 		// 25 points if the total is a multiple of 0.25
 		points += 25;
 	}
