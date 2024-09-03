@@ -158,3 +158,69 @@ Test cases ran:
 6 since purchase date is odd
 = 45
 - Response: 45
+
+8. Case 8: Large list of items
+`{
+     "retailer": "Big Store",
+     "purchaseDate": "2024-09-01",
+     "purchaseTime": "17:00",
+     "items": [
+       {"shortDescription": "Item 1", "price": "1.00"},
+       {"shortDescription": "Item 2", "price": "2.00"},
+       {"shortDescription": "Item 3", "price": "3.00"},
+       {"shortDescription": "Item 4", "price": "4.00"},
+       {"shortDescription": "Item 5", "price": "5.00"},
+       {"shortDescription": "Item 6", "price": "6.00"},
+       {"shortDescription": "Item 7", "price": "7.00"},
+       {"shortDescription": "Item 8", "price": "8.00"},
+       {"shortDescription": "Item 9", "price": "9.00"},
+       {"shortDescription": "Item 10", "price": "10.00"}
+     ],
+     "total": "55.00"
+}`
+
+- Expected:
++8 for retailer
++50 for round dollar amount
++25 for multiple of 0.25
++25 for number of items (5 per 2 items)
+For the items in the array, items 1-9 are trimmed are multiples of 3, so:
+1 * 0.2 = +1
+2 * 0.2 = +1
+3 * 0.2 = +1
+4 * 0.2 = +1
+5 * 0.2 = +1
+6 * 0.2 = +2
+7 * 0.2 = +2
+8 * 0.2 = +2
+9 * 0.2 = +2
++6 for odd purchase date
+= 127
+- Response: 127
+
+9. Case 9: Special characters in shortDescriptions
+`{
+     "retailer": "Special Char Store",
+     "purchaseDate": "2024-09-01",
+     "purchaseTime": "18:30",
+     "items": [
+       {
+         "shortDescription": "Café au lait",
+         "price": "3.75"
+       },
+       {
+         "shortDescription": "Tiramisu @ Home",
+         "price": "4.50"
+       }
+     ],
+     "total": "8.25"
+}`
+- Expected:
++16 for retailer
++25 for total multiple of 0.25
++5 for there being 2 items on receipt
+Café au lait is 12 characters and a multiple of 3, so +1
+Tiramisu @ Home is 15 characters, so +1
++6 for odd purchase date
+= 54
+- Response: 54
