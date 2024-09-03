@@ -179,22 +179,22 @@ Test cases ran:
      "total": "55.00"
 }`
 
-- Expected:
-+8 for retailer
-+50 for round dollar amount
-+25 for multiple of 0.25
-+25 for number of items (5 per 2 items)
-For the items in the array, items 1-9 are trimmed are multiples of 3, so:
-1 * 0.2 = +1
-2 * 0.2 = +1
-3 * 0.2 = +1
-4 * 0.2 = +1
-5 * 0.2 = +1
-6 * 0.2 = +2
-7 * 0.2 = +2
-8 * 0.2 = +2
-9 * 0.2 = +2
-+6 for odd purchase date
+- Expected:<br />
++8 for retailer<br />
++50 for round dollar amount<br />
++25 for multiple of 0.25<br />
++25 for number of items (5 per 2 items)<br />
+For the items in the array, items 1-9 are trimmed are multiples of 3, so:<br />
+1 * 0.2 = +1<br />
+2 * 0.2 = +1<br />
+3 * 0.2 = +1<br />
+4 * 0.2 = +1<br />
+5 * 0.2 = +1<br />
+6 * 0.2 = +2<br />
+7 * 0.2 = +2<br />
+8 * 0.2 = +2<br />
+9 * 0.2 = +2<br />
++6 for odd purchase date<br />
 = 127
 - Response: 127
 
@@ -216,11 +216,11 @@ For the items in the array, items 1-9 are trimmed are multiples of 3, so:
      "total": "8.25"
 }`
 - Expected:
-+16 for retailer
-+25 for total multiple of 0.25
-+5 for there being 2 items on receipt
-Café au lait is 12 characters and a multiple of 3, so +1
-Tiramisu @ Home is 15 characters, so +1
-+6 for odd purchase date
++16 for retailer<br />
++25 for total multiple of 0.25<br />
++5 for there being 2 items on receipt<br />
+Café au lait is 12 characters and a multiple of 3, so +1<br />
+Tiramisu @ Home is 15 characters, so +1<br />
++6 for odd purchase date<br />
 = 54
 - Response: 54
