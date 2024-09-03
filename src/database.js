@@ -22,15 +22,6 @@ class Database {
 			throw new Error("Error saving receipt to database: " + err);
 		}
 	};
-	addPoints(points){
-		try {
-			const uuid = uuidv4();
-			this.#data.points.set(uuid, points);
-			return
-		} catch (err) {
-			throw new Error("Error saving points to database: " + err);
-		}
-	};
 	getReceiptById(uuid){
 		try {
 			return this.#data.receipts.get(uuid);
@@ -38,13 +29,6 @@ class Database {
 			throw new Error("Invalid UUID: " + err);
 		}
 	};
-	getPointsById(uuid){
-		try {
-			return this.#data.points.get(uuid);
-		} catch (err) {
-			throw new Error("Invalid UUID: " + err)
-		}	
-	}
 }
 
 module.exports = Database;
